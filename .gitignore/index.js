@@ -15,7 +15,7 @@ client.on("ready", function() {
 });
 
 // Welcome message
-   client.on("guildMemberAdd", user =>{
+client.on("guildMemberAdd", user =>{
     let joinEmbed = new Discord.RichEmbed()
         .setColor("#000099")
         .setAuthor(user.user.username, user.user.displayAvatarURL)
@@ -26,6 +26,19 @@ client.on("ready", function() {
 var role = member.guild.roles.find('name', 'User');
 member.addRole(role)
 
+});
+
+//Comand
+client.on("message", message=>{
+    if (!message.guild) return
+
+    if (message.content === prefix + "help"){
+        var embed = new Discord.RichEmbed()
+            .setColor("#000099")
+            .setDescription("**__Liste des commandes :__**\n\n ***__Utilisateur__***\n\n**/ping** Savoir si le Bot est en ligne et obtenir sa latence.\n\n**/stats** Obtenir les statistiques d'un utilisateur.\n\n ***__Admin__***\n\n**/kick** Expulser utilisateur via le Bot\n\n**/ban** Bannir utilisateur via le bot")
+            .setFooter("France Multigaming");
+        message.channel.sendEmbed(embed);
+    }
 });
 
 // Authentification
